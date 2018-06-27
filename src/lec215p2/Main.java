@@ -6,7 +6,23 @@ public class Main {
 
     public static void main(String[] args) {
 //        workWithSets();
-        workWithMaps();
+//        workWithMaps();
+        example();
+    }
+
+    private static void example() {
+        String s = "it contains polymorphic algorithms that operate on collections";
+        Map<Character, Integer> map = new TreeMap<>();
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isLetter(chars[i])) {
+                int count = map.getOrDefault(chars[i], 0);
+                map.put(chars[i], count + 1);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
     }
 
     private static void workWithMaps() {
