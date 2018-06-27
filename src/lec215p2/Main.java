@@ -7,17 +7,47 @@ public class Main {
     public static void main(String[] args) {
 //        workWithSets();
 //        workWithMaps();
-        example();
+//        example();
+        example2();
+    }
+
+    private static void example2() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Іван", 2));
+        students.add(new Student("Вєсиль", 2));
+        students.add(new Student("Василь", 4));
+        students.add(new Student("Алекс", 5));
+        students.add(new Student("Олексій", 4));
+        students.add(new Student("Євген", 1));
+        for (Student student : students) {
+            System.out.println(student);
+        }
+        System.out.println("----------------------");
+//        for (int i = 0; i < students.size(); i++) { // НЕ ДЕЛАЙТЕ ТАК
+//            if (students.get(i).getMark()<3) {
+//                students.remove(i);
+//            }
+//        }
+        students.removeIf(student -> student.getMark() < 3); // МОДНАЯ ШТУКА КАК ТО, ЧТО НИЖЕ
+//        for (Iterator<Student> iterator = students.iterator(); iterator.hasNext(); ) {
+//            Student student = iterator.next();
+//            if (student.getMark()<3) {
+//                iterator.remove();
+//            }
+//        }
+        for (Student student : students) {
+            System.out.println(student);
+        }
     }
 
     private static void example() {
         String s = "it contains polymorphic algorithms that operate on collections";
         Map<Character, Integer> map = new TreeMap<>();
         char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if (Character.isLetter(chars[i])) {
-                int count = map.getOrDefault(chars[i], 0);
-                map.put(chars[i], count + 1);
+        for (char aChar : chars) {
+            if (Character.isLetter(aChar)) {
+                int count = map.getOrDefault(aChar, 0);
+                map.put(aChar, count + 1);
             }
         }
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
